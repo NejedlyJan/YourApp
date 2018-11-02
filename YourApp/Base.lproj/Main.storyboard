@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,11 +33,50 @@
                             <outlet property="delegate" destination="9qa-ci-Ggk" id="fg8-Zo-4h9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="YourApp" id="pU8-Di-IvA"/>
+                    <navigationItem key="navigationItem" title="YourApp" id="pU8-Di-IvA">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="nav_bar_ic_add" id="KDv-ld-Cwn">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="8cL-Ei-Y8a" kind="show" id="JZK-L1-vkm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPi-A1-Gut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1132" y="124.58770614692655"/>
+        </scene>
+        <!--New Task View Controller-->
+        <scene sceneID="sbV-uD-2Lf">
+            <objects>
+                <viewController id="8cL-Ei-Y8a" customClass="NewTaskViewController" customModule="YourApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yoB-72-vbD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What to do ?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9FJ-Tm-YHP">
+                                <rect key="frame" x="66" y="100" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqQ-yZ-pqY">
+                                <rect key="frame" x="137" y="275" width="101" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.32156862749999998" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Add task">
+                                    <color key="titleColor" red="1" green="0.9813650867" blue="0.99841230189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SwZ-tI-jDa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndP-ty-rdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1941.5999999999999" y="124.58770614692655"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KLv-hI-5ne">
@@ -58,7 +98,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHP-c4-QZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="192.80000000000001" y="124.58770614692655"/>
+            <point key="canvasLocation" x="1132" y="-694"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="nav_bar_ic_add" width="20" height="20"/>
+    </resources>
 </document>
