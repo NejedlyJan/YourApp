@@ -13,6 +13,7 @@
 		7EAEE10D218CD6480012202D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EAEE10C218CD6480012202D /* Assets.xcassets */; };
 		7EAEE110218CD6480012202D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAEE10E218CD6480012202D /* LaunchScreen.storyboard */; };
 		7EAEE118218CE70C0012202D /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE117218CE70C0012202D /* NewTaskViewController.swift */; };
+		7EAEE11B218CF1E00012202D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE119218CF1E00012202D /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7EAEE10F218CD6480012202D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EAEE111218CD6480012202D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EAEE117218CE70C0012202D /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		7EAEE11A218CF1E00012202D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				7EAEE105218CD6460012202D /* AppDelegate.swift */,
 				7EAEE107218CD6460012202D /* ListViewController.swift */,
 				7EAEE109218CD6460012202D /* Main.storyboard */,
+				7EAEE119218CF1E00012202D /* DataModel.xcdatamodeld */,
 				7EAEE10C218CD6480012202D /* Assets.xcassets */,
 				7EAEE10E218CD6480012202D /* LaunchScreen.storyboard */,
 				7EAEE111218CD6480012202D /* Info.plist */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EAEE108218CD6460012202D /* ListViewController.swift in Sources */,
+				7EAEE11B218CF1E00012202D /* DataModel.xcdatamodeld in Sources */,
 				7EAEE118218CE70C0012202D /* NewTaskViewController.swift in Sources */,
 				7EAEE106218CD6460012202D /* AppDelegate.swift in Sources */,
 			);
@@ -340,6 +344,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7EAEE119218CF1E00012202D /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7EAEE11A218CF1E00012202D /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 7EAEE11A218CF1E00012202D /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7EAEE0FA218CD6460012202D /* Project object */;
 }
