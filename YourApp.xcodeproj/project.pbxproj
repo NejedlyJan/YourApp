@@ -60,12 +60,12 @@
 			children = (
 				7EAEE105218CD6460012202D /* AppDelegate.swift */,
 				7EAEE107218CD6460012202D /* ListViewController.swift */,
+				7EAEE117218CE70C0012202D /* NewTaskViewController.swift */,
 				7EAEE109218CD6460012202D /* Main.storyboard */,
 				7EAEE119218CF1E00012202D /* DataModel.xcdatamodeld */,
 				7EAEE10C218CD6480012202D /* Assets.xcassets */,
 				7EAEE10E218CD6480012202D /* LaunchScreen.storyboard */,
 				7EAEE111218CD6480012202D /* Info.plist */,
-				7EAEE117218CE70C0012202D /* NewTaskViewController.swift */,
 			);
 			path = YourApp;
 			sourceTree = "<group>";
