@@ -12,7 +12,13 @@ import CoreData
 class NewTaskViewController: UIViewController {
     
     @IBOutlet weak var textFieldInput: UITextField!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var selectedColorButtonTag = 1
+    
+    override func viewDidLoad() {
+        selectButton()
+    }
     
     
     @IBAction func addItemButtonClicked(_ sender: UIButton) {
@@ -20,27 +26,33 @@ class NewTaskViewController: UIViewController {
         let newItem = Task(context: self.context)
         
         newItem.done = false
+        newItem.categoryColor = Int32(selectedColorButtonTag)
         newItem.title = textFieldInput.text
         
         saveItems()
         navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func changeColor(sender: AnyObject) {
         guard let button = sender as? UIButton else {
             return
         }
-        switch button.tag {
-        case 1:
-            print("red")
-        case 2:
-            print("gree")
-        case 3:
-            print("blue")
-        default:
-            print("Unknown language")
-            return
+        selectedColorButtonTag = button.tag
+        selectButton()
+    }
+    
+    func selectButton() {
+        for button in self.view.subviews {
+            if button.tag == selectedColorButtonTag {
+                button.layer.borderWidth = 3.0
+                button.layer.borderColor = UIColor.blue.cgColor
+            }
+            else {
+                button.layer.borderWidth = 0
+            }
         }
     }
+    
     func saveItems() {
         do {
             try context.save()
