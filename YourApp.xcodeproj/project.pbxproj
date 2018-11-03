@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7EA789A6218DCB010010FFA6 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA789A4218DCB000010FFA6 /* DataModel.xcdatamodeld */; };
+		7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */; };
+		7E85A3C0218DF92D00A474A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */; };
 		7EAEE106218CD6460012202D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE105218CD6460012202D /* AppDelegate.swift */; };
 		7EAEE108218CD6460012202D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE107218CD6460012202D /* ListViewController.swift */; };
 		7EAEE10B218CD6460012202D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAEE109218CD6460012202D /* Main.storyboard */; };
@@ -17,7 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7EA789A5218DCB000010FFA6 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7EAEE102218CD6460012202D /* YourApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAEE105218CD6460012202D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EAEE107218CD6460012202D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -61,9 +63,10 @@
 				7EAEE105218CD6460012202D /* AppDelegate.swift */,
 				7EAEE107218CD6460012202D /* ListViewController.swift */,
 				7EAEE117218CE70C0012202D /* NewTaskViewController.swift */,
+				7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */,
 				7EAEE109218CD6460012202D /* Main.storyboard */,
+				7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */,
 				7EAEE10C218CD6480012202D /* Assets.xcassets */,
-				7EA789A4218DCB000010FFA6 /* DataModel.xcdatamodeld */,
 				7EAEE10E218CD6480012202D /* LaunchScreen.storyboard */,
 				7EAEE111218CD6480012202D /* Info.plist */,
 			);
@@ -142,8 +145,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EAEE108218CD6460012202D /* ListViewController.swift in Sources */,
-				7EA789A6218DCB010010FFA6 /* DataModel.xcdatamodeld in Sources */,
+				7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */,
 				7EAEE118218CE70C0012202D /* NewTaskViewController.swift in Sources */,
+				7E85A3C0218DF92D00A474A7 /* SettingsViewController.swift in Sources */,
 				7EAEE106218CD6460012202D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,12 +350,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7EA789A4218DCB000010FFA6 /* DataModel.xcdatamodeld */ = {
+		7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7EA789A5218DCB000010FFA6 /* DataModel.xcdatamodel */,
+				7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 7EA789A5218DCB000010FFA6 /* DataModel.xcdatamodel */;
+			currentVersion = 7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */;
 			name = DataModel.xcdatamodeld;
 			path = ../DataModel.xcdatamodeld;
 			sourceTree = "<group>";

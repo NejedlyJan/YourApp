@@ -10,6 +10,44 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="KIF-Lh-j0F">
+            <objects>
+                <viewController id="Lz0-MT-EJS" customClass="SettingsViewController" customModule="YourApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7UH-Aq-muC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YaM-DH-0TX">
+                                <rect key="frame" x="41" y="281" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVd-EZ-KcL">
+                                <rect key="frame" x="214" y="280" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.40401806899999998" blue="0.29062817889999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="1" green="0.9813650867" blue="0.99841230189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonClicked:" destination="Lz0-MT-EJS" eventType="touchUpInside" id="bo3-Bb-ccr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4mY-8Z-pwf"/>
+                    </view>
+                    <connections>
+                        <outlet property="newCategoryInputOutlet" destination="YaM-DH-0TX" id="Be4-S2-roM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9B-Pl-m7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="124.58770614692655"/>
+        </scene>
         <!--YourApp-->
         <scene sceneID="eSk-vN-nU7">
             <objects>
@@ -34,7 +72,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="YourApp" id="pU8-Di-IvA">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="nav_bar_ic_settings" id="W0b-33-Mrt"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="nav_bar_ic_settings" id="W0b-33-Mrt">
+                            <connections>
+                                <segue destination="Lz0-MT-EJS" kind="show" id="RFV-PA-Dv3"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="nav_bar_ic_add" width="22" id="KDv-ld-Cwn">
                             <connections>
                                 <segue destination="8cL-Ei-Y8a" kind="show" id="JZK-L1-vkm"/>
@@ -135,7 +177,7 @@
                                     <action selector="addItemButtonClicked:" destination="8cL-Ei-Y8a" eventType="touchUpInside" id="mXX-dZ-RDh"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bxN-VP-dRQ">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bxN-VP-dRQ">
                                 <rect key="frame" x="146" y="263" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -149,7 +191,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="En0-Hr-giF">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="En0-Hr-giF">
                                 <rect key="frame" x="146" y="318" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -159,10 +201,16 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Wyn-0d-Cc4">
                                 <rect key="frame" x="292" y="263" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="categorySwitchClicked:" destination="8cL-Ei-Y8a" eventType="valueChanged" id="rLy-oy-RU8"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nhy-Ix-ZVe">
                                 <rect key="frame" x="292" y="318" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="dueDateSwitchClicked:" destination="8cL-Ei-Y8a" eventType="valueChanged" id="Op2-QG-AXU"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -170,9 +218,9 @@
                     </view>
                     <connections>
                         <outlet property="categoryInputOutlet" destination="bxN-VP-dRQ" id="3rc-47-yVe"/>
-                        <outlet property="categorySwitchOutlet" destination="Wyn-0d-Cc4" id="3yV-vF-xcd"/>
+                        <outlet property="categorySwitchOutlet" destination="Wyn-0d-Cc4" id="FTa-kd-pAE"/>
                         <outlet property="dueDateInputOutlet" destination="En0-Hr-giF" id="ViD-PT-prX"/>
-                        <outlet property="dueDateSwitchOutlet" destination="Nhy-Ix-ZVe" id="nh7-Sj-i4X"/>
+                        <outlet property="dueDateSwitchOutlet" destination="Nhy-Ix-ZVe" id="cRN-jC-lQH"/>
                         <outlet property="titleInputOutlet" destination="9FJ-Tm-YHP" id="XIJ-ze-Bq9"/>
                     </connections>
                 </viewController>
