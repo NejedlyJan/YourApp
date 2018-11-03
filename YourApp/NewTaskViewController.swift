@@ -23,6 +23,23 @@ class NewTaskViewController: UIViewController {
         newItem.title = textFieldInput.text
         
         saveItems()
+        navigationController?.popViewController(animated: true)
+    }
+    @IBAction func changeColor(sender: AnyObject) {
+        guard let button = sender as? UIButton else {
+            return
+        }
+        switch button.tag {
+        case 1:
+            print("red")
+        case 2:
+            print("gree")
+        case 3:
+            print("blue")
+        default:
+            print("Unknown language")
+            return
+        }
     }
     func saveItems() {
         do {
@@ -32,4 +49,5 @@ class NewTaskViewController: UIViewController {
             print("Error saving data to CoreData: \(error)")
         }
     }
+    
 }

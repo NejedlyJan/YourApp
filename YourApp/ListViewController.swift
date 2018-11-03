@@ -20,6 +20,10 @@ class ListViewController: UITableViewController {
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         loadItems()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        loadItems()
+        self.tableView.reloadData()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
