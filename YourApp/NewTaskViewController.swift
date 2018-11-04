@@ -92,7 +92,6 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             categoryInputOutlet.inputView = pickerView
         }
         
-        
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
         datePicker.locale = NSLocale(localeIdentifier: "cs") as Locale
