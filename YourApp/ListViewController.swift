@@ -34,6 +34,20 @@ class ListViewController: UITableViewController {
         
         cell.textLabel?.text = itemArray[indexPath.row].title
         
+        let backgroundColor: UIColor
+        switch itemArray[indexPath.row].categoryColor {
+        case 1:
+            backgroundColor = UIColor(red:0.96, green:0.32, blue:0.18, alpha:1.0)
+        case 2:
+            backgroundColor = UIColor(red:0.47, green:0.65, blue:0.00, alpha:1.0)
+        case 3:
+            backgroundColor = UIColor(red:1.00, green:0.43, blue:0.51, alpha:1.0)
+        case 4:
+            backgroundColor = UIColor(red:0.89, green:0.71, blue:0.00, alpha:1.0)
+        default:
+            backgroundColor = UIColor.white
+        }
+        cell.backgroundColor = backgroundColor
         return cell
     }
     
@@ -47,6 +61,28 @@ class ListViewController: UITableViewController {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            context.delete(itemArray[indexPath.row])
+            itemArray.remove(at: indexPath.row)
+            
+            saveItems()
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+            tableView.reloadData()
+        }
+    }
+    
+    func saveItems() {
+        do {
+            try context.save()
+            print("Saving to CoreData")
+        } catch {
+            print("Error saving data to CoreData: \(error)")
+        }
+    }
+    
     func loadItems() {
         let request : NSFetchRequest<Task> = Task.fetchRequest()
         do {
