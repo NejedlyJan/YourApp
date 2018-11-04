@@ -58,7 +58,13 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             dueDateSwitchOutlet.isOn = true
         }
         submitButtonOutlet.setTitle("Update task", for: .normal)
-        
+        let deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteButtonClicked))
+        self.navigationItem.rightBarButtonItem = deleteButton
+    }
+    @objc func deleteButtonClicked() {
+        context.delete(editTask!)
+        saveItems()
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func addItemButtonClicked(_ sender: UIButton) {
