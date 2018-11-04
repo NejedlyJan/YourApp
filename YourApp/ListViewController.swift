@@ -9,16 +9,16 @@
 import UIKit
 import CoreData
 
+
 class ListViewController: UITableViewController {
     
     var itemArray = [Task]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         loadItems()
+       
     }
     override func viewDidAppear(_ animated: Bool) {
         loadItems()
@@ -85,6 +85,12 @@ class ListViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         print(indexPath.row)
+        let task = itemArray[indexPath.row]
+        print(task)
+
+        let controller = storyboard?.instantiateViewController(withIdentifier: "NewTaskViewController") as! NewTaskViewController
+        controller.setTask(task: task)
+        self.navigationController!.pushViewController(controller, animated: true)
     }
     
     func saveItems() {

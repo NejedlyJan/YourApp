@@ -16,23 +16,48 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var dueDateInputOutlet: UITextField!
     @IBOutlet weak var dueDateSwitchOutlet: UISwitch!
     @IBOutlet weak var categorySwitchOutlet: UISwitch!
+    @IBOutlet weak var submitButtonOutlet: UIButton!
     
     
     var categoryArray = [Category]()
-    //    var categoryNamesArray = ["School", "Work", "Free-time" ]
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selectedColorButtonTag = 1
     var selectedCategory: Int?
     var selectedDueDate: Date?
-    
+    var editTask: Task?
+    let taskVC = ListViewController()
     
     
     override func viewDidLoad() {
-        
+
         loadCategories()
         selectButton()
         setupPickerViews()
         setupPickerToolbar()
+        
+        if editTask != nil {
+            fillTaskToEdit()
+        }
+        
+    }
+    
+    func setTask(task: Task) {
+        editTask = task
+    }
+    
+    func fillTaskToEdit() {
+        titleInputOutlet.text = editTask?.title
+        selectedColorButtonTag = Int(editTask!.categoryColor)
+        selectButton()
+        if let category = editTask?.parentCategory {
+            categoryInputOutlet.text = category.name
+            categorySwitchOutlet.isOn = true
+        }
+        if let date = editTask?.dueDate {
+            dueDateInputOutlet.text = date.formatDate()
+            dueDateSwitchOutlet.isOn = true
+        }
+        submitButtonOutlet.setTitle("Update task", for: .normal)
         
     }
     
@@ -42,19 +67,19 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             showAlert()
             return
         }
-        let newItem = Task(context: self.context)
         
-        newItem.done = false
-        newItem.categoryColor = Int32(selectedColorButtonTag)
-        newItem.title = titleInputOutlet.text
+        let item = editTask ?? Task(context: self.context)
         
-        if let categoryIndex = selectedCategory {
-            newItem.parentCategory = categoryArray[categoryIndex]
+        item.done = false
+        item.categoryColor = Int32(selectedColorButtonTag)
+        item.title = titleInputOutlet.text
+        if selectedCategory != nil {
+            item.parentCategory = categoryArray[selectedCategory!]
         }
-        if let date = selectedDueDate {
-            newItem.dueDate = date
+        else {
+            item.parentCategory = nil
         }
-        
+        item.dueDate = selectedDueDate
         saveItems()
         navigationController?.popViewController(animated: true)
     }
@@ -63,6 +88,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        print("done")
     }
     
     @IBAction func changeColor(sender: AnyObject) {
@@ -132,6 +158,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         else {
             categoryInputOutlet.isEnabled = false
             categoryInputOutlet.text = ""
+            selectedCategory = nil
         }
 }
     @IBAction func dueDateSwitchClicked(_ sender: Any) {
@@ -141,12 +168,11 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         else {
             dueDateInputOutlet.isEnabled = false
             dueDateInputOutlet.text = ""
+            selectedDueDate = nil
         }
     }
     @objc func datePickerValueChanged(sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YY HH:mm"
-        dueDateInputOutlet.text = dateFormatter.string(from: sender.date)
+        dueDateInputOutlet.text = sender.date.formatDate()
         selectedDueDate = sender.date
     }
     
@@ -183,4 +209,13 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     
+}
+
+extension Date {
+    func formatDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.YY HH:mm"
+        let formattedString = dateFormatter.string(from: self)
+        return formattedString
+    }
 }

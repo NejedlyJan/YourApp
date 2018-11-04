@@ -51,7 +51,7 @@
         <!--YourApp-->
         <scene sceneID="eSk-vN-nU7">
             <objects>
-                <tableViewController id="9qa-ci-Ggk" customClass="ListViewController" customModule="YourApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9qa-ci-Ggk" customClass="ListViewController" customModule="YourApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6uu-eo-hNb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,7 +91,7 @@
         <!--New Task View Controller-->
         <scene sceneID="sbV-uD-2Lf">
             <objects>
-                <viewController id="8cL-Ei-Y8a" customClass="NewTaskViewController" customModule="YourApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewTaskViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8cL-Ei-Y8a" customClass="NewTaskViewController" customModule="YourApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yoB-72-vbD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,6 +221,7 @@
                         <outlet property="categorySwitchOutlet" destination="Wyn-0d-Cc4" id="FTa-kd-pAE"/>
                         <outlet property="dueDateInputOutlet" destination="En0-Hr-giF" id="ViD-PT-prX"/>
                         <outlet property="dueDateSwitchOutlet" destination="Nhy-Ix-ZVe" id="cRN-jC-lQH"/>
+                        <outlet property="submitButtonOutlet" destination="eqQ-yZ-pqY" id="4hN-6F-rd6"/>
                         <outlet property="titleInputOutlet" destination="9FJ-Tm-YHP" id="XIJ-ze-Bq9"/>
                     </connections>
                 </viewController>
