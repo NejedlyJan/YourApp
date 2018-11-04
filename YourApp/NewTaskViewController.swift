@@ -19,9 +19,11 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     
     var categoryArray = [Category]()
-//    var categoryNamesArray = ["School", "Work", "Free-time" ]
+    //    var categoryNamesArray = ["School", "Work", "Free-time" ]
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selectedColorButtonTag = 1
+    var selectedCategory: Int?
+    var selectedDueDate: Date?
     
     
     
@@ -46,13 +48,19 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         newItem.categoryColor = Int32(selectedColorButtonTag)
         newItem.title = titleInputOutlet.text
         
+        if let categoryIndex = selectedCategory {
+            newItem.parentCategory = categoryArray[categoryIndex]
+        }
+        if let date = selectedDueDate {
+            newItem.dueDate = date
+        }
         
         saveItems()
         navigationController?.popViewController(animated: true)
     }
     
-    func showAlert() {
-        let alert = UIAlertController(title: "Error", message: "Please fill all required inputs", preferredStyle: UIAlertController.Style.alert)
+    func showAlert(message: String = "Please fill all required inputs") {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -77,9 +85,13 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     fileprivate func setupPickerViews() {
-        let pickerView  = UIPickerView()
-        pickerView.delegate = self
-        categoryInputOutlet.inputView = pickerView
+        
+        if !categoryArray.isEmpty {
+            let pickerView  = UIPickerView()
+            pickerView.delegate = self
+            categoryInputOutlet.inputView = pickerView
+        }
+        
         
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
@@ -110,14 +122,19 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     @IBAction func categorySwitchClicked(_ sender: Any) {
         if categorySwitchOutlet.isOn {
-            categoryInputOutlet.isEnabled = true
-            
+            if !categoryArray.isEmpty {
+                categoryInputOutlet.isEnabled = true
+            }
+            else {
+                categorySwitchOutlet.isOn = false
+                showAlert(message: "No categories, please add one in the settings page")
+            }
         }
         else {
             categoryInputOutlet.isEnabled = false
             categoryInputOutlet.text = ""
         }
-    }
+}
     @IBAction func dueDateSwitchClicked(_ sender: Any) {
         if dueDateSwitchOutlet.isOn {
             dueDateInputOutlet.isEnabled = true
@@ -131,10 +148,11 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.YY HH:mm"
         dueDateInputOutlet.text = dateFormatter.string(from: sender.date)
+        selectedDueDate = sender.date
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-       return 1
+        return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categoryArray.count
@@ -144,6 +162,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryInputOutlet.text = categoryArray[row].name
+        selectedCategory = row
     }
     
     func loadCategories() {
