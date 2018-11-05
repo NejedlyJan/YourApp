@@ -212,11 +212,17 @@
                                     <action selector="dueDateSwitchClicked:" destination="8cL-Ei-Y8a" eventType="valueChanged" id="Op2-QG-AXU"/>
                                 </connections>
                             </switch>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="I5v-Ue-84X">
+                                <rect key="frame" x="192" y="506" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="1" green="0.43137254899999999" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SwZ-tI-jDa"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="I5v-Ue-84X" id="qNP-i2-8lP"/>
                         <outlet property="categoryInputOutlet" destination="bxN-VP-dRQ" id="3rc-47-yVe"/>
                         <outlet property="categorySwitchOutlet" destination="Wyn-0d-Cc4" id="FTa-kd-pAE"/>
                         <outlet property="dueDateInputOutlet" destination="En0-Hr-giF" id="ViD-PT-prX"/>

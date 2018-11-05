@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E56EF8D2190430E00694FBA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56EF8C2190430E00694FBA /* NotificationManager.swift */; };
 		7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */; };
 		7E85A3C0218DF92D00A474A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */; };
 		7EAEE106218CD6460012202D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE105218CD6460012202D /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E56EF8C2190430E00694FBA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7EAEE102218CD6460012202D /* YourApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 				7EAEE107218CD6460012202D /* ListViewController.swift */,
 				7EAEE117218CE70C0012202D /* NewTaskViewController.swift */,
 				7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */,
+				7E56EF8C2190430E00694FBA /* NotificationManager.swift */,
 				7EAEE109218CD6460012202D /* Main.storyboard */,
 				7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */,
 				7EAEE10C218CD6480012202D /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E56EF8D2190430E00694FBA /* NotificationManager.swift in Sources */,
 				7EAEE108218CD6460012202D /* ListViewController.swift in Sources */,
 				7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */,
 				7EAEE118218CE70C0012202D /* NewTaskViewController.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -17,6 +18,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var dueDateSwitchOutlet: UISwitch!
     @IBOutlet weak var categorySwitchOutlet: UISwitch!
     @IBOutlet weak var submitButtonOutlet: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     var categoryArray = [Category]()
@@ -26,10 +28,12 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var selectedDueDate: Date?
     var editTask: Task?
     let taskVC = ListViewController()
+    let notificationManager = NotificationManager()
+    
     
     
     override func viewDidLoad() {
-
+        
         loadCategories()
         selectButton()
         setupPickerViews()
@@ -86,8 +90,10 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             item.parentCategory = nil
         }
         item.dueDate = selectedDueDate
+       
+        notificationManager.addNotifiaction(item)
         saveItems()
-        navigationController?.popViewController(animated: true)
+      
     }
     
     func showAlert(message: String = "Please fill all required inputs") {
@@ -207,12 +213,22 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     func saveItems() {
+        
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         do {
             try context.save()
             print("Saving to CoreData")
         } catch {
             print("Error saving data to CoreData: \(error)")
         }
+        activityIndicator.stopAnimating()
+        navigationController?.popViewController(animated: true)
     }
     
 }
