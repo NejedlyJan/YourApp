@@ -91,7 +91,10 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
         item.dueDate = selectedDueDate
        
-        notificationManager.addNotifiaction(item)
+        if selectedDueDate != nil {
+            notificationManager.addNotifiaction(item)
+        }
+        
         saveItems()
       
     }

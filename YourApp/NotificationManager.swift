@@ -32,7 +32,6 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         content.title = "Time is up!"
         content.body = task.title!
         content.sound = UNNotificationSound.default
-        print(task.dueDate!.formatDate())
 
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: task.dueDate!)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)

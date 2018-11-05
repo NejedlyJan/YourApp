@@ -30,14 +30,15 @@ class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListItemCell", for: indexPath)
-        
-        cell.textLabel?.text = itemArray[indexPath.row].title
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListItemCell", for: indexPath) as! CustomTableViewCell
         let backgroundColorIndex = Int(itemArray[indexPath.row].categoryColor)
-        let backgroundColor = returnColorforIndex(backgroundColorIndex)
+        cell.cellLabelOutlet.text = itemArray[indexPath.row].title
+        cell.labelColorOutlet.backgroundColor = returnColorforIndex(backgroundColorIndex)
         
-        cell.backgroundColor = backgroundColor
+        
+//        let backgroundColor = returnColorforIndex(backgroundColorIndex)
+//        
+//        cell.backgroundColor = backgroundColor
         cell.accessoryType = .detailButton
         
         return cell
@@ -62,14 +63,36 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-//        if tableView.cellForRow(at: indexPath)?.accessoryType == .detailButton {
+        let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+//        cell.textLabel!.backgroundColor = UIColor.clear
+        let text = cell.cellLabelOutlet.text
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: text!)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        
+        if !itemArray[indexPath.row].done {
+            cell.cellLabelOutlet.attributedText = attributeString
+            itemArray[indexPath.row].done = true
+        }
+        else {
+            cell.cellLabelOutlet.attributedText = nil
+            cell.cellLabelOutlet.text = itemArray[indexPath.row].title
+            itemArray[indexPath.row].done = false
+        }
+        saveItems()
+        tableView.reloadData()
+        
+        
+//        if tableView.cellForRow(at: indexPath).
 //            tableView.cellForRow(at: indexPath)?.accessoryType = .none
 //
 //        }
 //        else {
 //            tableView.cellForRow(at: indexPath)?.accessoryType = .detailButton
 //        }
-//        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
