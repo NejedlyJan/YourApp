@@ -18,11 +18,11 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        itemArray = dataMan.getTasks()
+        itemArray = dataMan.getItem(Task.self)
        
     }
     override func viewDidAppear(_ animated: Bool) {
-        itemArray = dataMan.getTasks()
+        itemArray = dataMan.getItem(Task.self)
         self.tableView.reloadData()
     }
     
@@ -37,11 +37,8 @@ class ListViewController: UITableViewController {
         cell.labelColorOutlet.backgroundColor = returnColorforIndex(backgroundColorIndex)
         let formattedDate = itemArray[indexPath.row].dueDate?.formatDate()
         cell.dateLabelOutlet.text = formattedDate
-        
-        
-//        let backgroundColor = returnColorforIndex(backgroundColorIndex)
-//        
-//        cell.backgroundColor = backgroundColor
+        cell.categoryLabelOutlet.text = itemArray[indexPath.row].parentCategory?.name
+        cell.tintColor = returnColorforIndex(backgroundColorIndex)
         cell.accessoryType = .detailButton
         
         return cell
@@ -67,8 +64,6 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
-//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-//        cell.textLabel!.backgroundColor = UIColor.clear
         let text = cell.cellLabelOutlet.text
         
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: text!)
@@ -84,16 +79,6 @@ class ListViewController: UITableViewController {
             itemArray[indexPath.row].done = false
         }
         dataMan.saveItems()
-        tableView.reloadData()
-        
-        
-//        if tableView.cellForRow(at: indexPath).
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-//
-//        }
-//        else {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .detailButton
-//        }
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }

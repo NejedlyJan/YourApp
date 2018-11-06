@@ -10,19 +10,34 @@ import UIKit
 import CoreData
 import UserNotifications
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var settingSwitchOutlet: UISwitch!
     @IBOutlet weak var newCategoryInputOutlet: UITextField!
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let dataMan = DataManager()
+    let notificationMan = NotificationManager()
+    var categoryNames = [String]()
+    
+    
+    
     @IBAction func switchButtonPressed(_ sender: Any) {
         UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
     }
     
     override func viewDidLoad() {
+        for category in dataMan.getItem(Category.self) {
+            categoryNames.append(category.name!)
+        }
+        
+        newCategoryInputOutlet.delegate = self
+        newCategoryInputOutlet.returnKeyType = UIReturnKeyType.done
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updateSwitch), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        newCategoryInputOutlet.resignFirstResponder()
+        return true
+    }
     @objc func updateSwitch() {
         setupSwitch()
     }
@@ -33,13 +48,18 @@ class SettingsViewController: UIViewController {
             
             switch settings.alertSetting{
             case .enabled:
-                self.settingSwitchOutlet.isOn = true
+                self.operateSwitch(true)
             case .disabled:
-                self.settingSwitchOutlet.isOn = false
+                self.operateSwitch(false)
             case .notSupported:
                 print("somethings wrong here")
             }
         }
+    }
+    func operateSwitch(_ isOn: Bool) {
+        DispatchQueue.main.async(execute: {
+            self.settingSwitchOutlet.isOn = isOn
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,17 +68,29 @@ class SettingsViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
     
+    
+    
     @IBAction func addButtonClicked(_ sender: Any) {
-        let newItem = Category(context: self.context)
-        newItem.name = newCategoryInputOutlet.text
-        saveItems()
-    }
-    func saveItems() {
-        do {
-            try context.save()
-            print("Saving to CoreData")
-        } catch {
-            print("Error saving data to CoreData: \(error)")
+        var title = "Success"
+        var message = "New category successfuly saved"
+        if newCategoryInputOutlet.text == "" {
+            title = "Error adding new category"
+            message = "Please fill the category name"
+            notificationMan.showAlert(title: title, message: message, view: self)
+            return
         }
+        else if categoryNames.contains(newCategoryInputOutlet.text!) {
+            title = "Error adding new category"
+            message = "This category name is already added"
+            notificationMan.showAlert(title: title, message: message, view: self)
+            return
+        }
+        categoryNames.append(newCategoryInputOutlet.text!)
+        let newItem = Category(context: dataMan.getContext())
+        newItem.name = newCategoryInputOutlet.text
+        dataMan.saveItems()
+        notificationMan.showAlert(title: title, message: message, view: self)
+        return
+        
     }
 }

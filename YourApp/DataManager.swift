@@ -13,6 +13,8 @@ class DataManager {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    
+    
     func saveItems() {
         do {
             try context.save()
@@ -21,29 +23,23 @@ class DataManager {
             print("Error saving data to CoreData: \(error)")
         }
     }
+
     
-    func getTasks() -> [Task] {
-        let request : NSFetchRequest<Task> = Task.fetchRequest()
-        var itemArray =  [Task]()
+    func getContext() -> NSManagedObjectContext {
+        return context
+    }
+    
+    
+    func getItem<T:NSManagedObject>(_ type: T.Type) -> [T] {
+        let request : NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
+        var itemArray = [T]()
         do {
-            itemArray = try context.fetch(request)
+            itemArray =  try context.fetch(request)
         }
         catch {
             print("Error fetching data \(error)")
         }
         return itemArray
-    }
-    
-    func getCategories() -> [Category] {
-        let request : NSFetchRequest<Category> = Category.fetchRequest()
-        var categoryArray = [Category]()
-        do {
-            categoryArray =  try context.fetch(request)
-        }
-        catch {
-            print("Error fetching data \(error)")
-        }
-        return categoryArray
     }
     
     func deleteTask(_ task: Task) {

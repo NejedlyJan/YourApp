@@ -14,6 +14,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabelOutlet: UILabel!
     @IBOutlet weak var labelColorOutlet: UIView!
     @IBOutlet weak var cellLabelOutlet: UILabel!
+    @IBOutlet weak var categoryLabelOutlet: UILabel!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         let color = labelColorOutlet.backgroundColor

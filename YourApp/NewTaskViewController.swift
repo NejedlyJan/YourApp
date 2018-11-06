@@ -18,7 +18,9 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var dueDateSwitchOutlet: UISwitch!
     @IBOutlet weak var categorySwitchOutlet: UISwitch!
     @IBOutlet weak var submitButtonOutlet: UIButton!
-
+    @IBOutlet weak var buttonContainer: UIView!
+    
+    
     
     
     var categoryArray = [Category]()
@@ -37,7 +39,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         titleInputOutlet.delegate = self
         
-        categoryArray = dataMan.getCategories()
+        categoryArray = dataMan.getItem(Category.self)
         selectButton()
         setupPickerViews()
         setupPickerToolbar()
@@ -47,6 +49,14 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
         titleInputOutlet.returnKeyType = UIReturnKeyType.done
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if categorySwitchOutlet.isOn {
+            categoryInputOutlet.isEnabled = true
+        }
+        if dueDateSwitchOutlet.isOn {
+            dueDateInputOutlet.isEnabled = true
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -64,10 +74,13 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         if let category = editTask?.parentCategory {
             categoryInputOutlet.text = category.name
             categorySwitchOutlet.isOn = true
+            let categoryName = editTask?.parentCategory?.name
+            selectedCategory = categoryArray.index(where: {$0.name == categoryName})
         }
         if let date = editTask?.dueDate {
             dueDateInputOutlet.text = date.formatDate()
             dueDateSwitchOutlet.isOn = true
+            selectedDueDate = editTask?.dueDate
         }
         submitButtonOutlet.setTitle("Update task", for: .normal)
         let deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteButtonClicked))
@@ -82,11 +95,13 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBAction func addItemButtonClicked(_ sender: UIButton) {
         
         if titleInputOutlet.text == "" || (categorySwitchOutlet.isOn && categoryInputOutlet.text == "") || (dueDateSwitchOutlet.isOn && dueDateInputOutlet.text == "") {
-            showAlert()
+            let title = "Error adding new task"
+            let message = "Please fill all chosen inputs"
+            notificationManager.showAlert(title: title, message: message, view: self)
             return
         }
         
-        let item = editTask ?? Task(context: self.context)
+        let item = editTask ?? Task(context: dataMan.getContext())
         
         item.done = false
         item.categoryColor = Int32(selectedColorButtonTag)
@@ -108,13 +123,6 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
       
     }
     
-    func showAlert(message: String = "Please fill all required inputs") {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        print("done")
-    }
-    
     @IBAction func changeColor(sender: AnyObject) {
         guard let button = sender as? UIButton else {
             return
@@ -124,7 +132,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     func selectButton() {
-        for button in self.view.subviews {
+        for button in buttonContainer.subviews {
             if button.tag == selectedColorButtonTag {
                 button.layer.borderWidth = 3.0
                 button.layer.borderColor = UIColor.blue.cgColor
@@ -176,7 +184,9 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
             else {
                 categorySwitchOutlet.isOn = false
-                showAlert(message: "No categories, please add one in the settings page")
+                let title = "Error adding new task"
+                let message = "Please fill all chosen inputs"
+                notificationManager.showAlert(title: title, message: message, view: self)
             }
         }
         else {
@@ -213,8 +223,6 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         categoryInputOutlet.text = categoryArray[row].name
         selectedCategory = row
     }
-    
-    
 }
 
 extension Date {

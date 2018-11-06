@@ -7,13 +7,14 @@
 //
 
 import UserNotifications
+import UIKit
 
 class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     let notificationCenter = UNUserNotificationCenter.current()
     let notificationOptions: UNAuthorizationOptions = [.alert, .sound];
     var currentTask: Task? = nil
-    let defaults = UserDefaults.standard
-    var notificationRequests = [UNNotificationRequest]()
+//    let defaults = UserDefaults.standard
+//    var notificationRequests = [UNNotificationRequest]()
     
     func requestAuthorization() {
         notificationCenter.requestAuthorization(options: notificationOptions) {
@@ -26,7 +27,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
 
     func addNotifiaction(_ task: Task) {
 
-        disableNotifications()
+//        disableNotifications()
         currentTask = task
         let content = UNMutableNotificationContent()
         content.title = "Time is up!"
@@ -47,11 +48,17 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         })
         
     }
-    
-    func disableNotifications() {
-        notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
-            self.notificationRequests = requests
-            print(requests)
-    })
+    func showAlert(title: String, message: String, view: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        view.present(alert, animated: true, completion: nil)
+        print("done")
     }
+    
+//    func disableNotifications() {
+//        notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
+//            self.notificationRequests = requests
+//            print(requests)
+//    })
+//    }
 }
