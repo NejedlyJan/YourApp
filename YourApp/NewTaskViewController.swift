@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import UserNotifications
 
-class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var titleInputOutlet: UITextField!
     @IBOutlet weak var categoryInputOutlet: UITextField!
@@ -18,7 +18,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var dueDateSwitchOutlet: UISwitch!
     @IBOutlet weak var categorySwitchOutlet: UISwitch!
     @IBOutlet weak var submitButtonOutlet: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     
     
     var categoryArray = [Category]()
@@ -29,12 +29,15 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var editTask: Task?
     let taskVC = ListViewController()
     let notificationManager = NotificationManager()
+    let dataMan = DataManager()
     
     
     
     override func viewDidLoad() {
         
-        loadCategories()
+        titleInputOutlet.delegate = self
+        
+        categoryArray = dataMan.getCategories()
         selectButton()
         setupPickerViews()
         setupPickerToolbar()
@@ -42,9 +45,14 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         if editTask != nil {
             fillTaskToEdit()
         }
+        titleInputOutlet.returnKeyType = UIReturnKeyType.done
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleInputOutlet.resignFirstResponder()
+        return true
+    }
     func setTask(task: Task) {
         editTask = task
     }
@@ -67,7 +75,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     @objc func deleteButtonClicked() {
         context.delete(editTask!)
-        saveItems()
+        dataMan.saveItems()
         navigationController?.popViewController(animated: true)
     }
     
@@ -95,7 +103,8 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             notificationManager.addNotifiaction(item)
         }
         
-        saveItems()
+        dataMan.saveItems()
+        navigationController?.popViewController(animated: true)
       
     }
     
@@ -205,34 +214,6 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         selectedCategory = row
     }
     
-    func loadCategories() {
-        let request : NSFetchRequest<Category> = Category.fetchRequest()
-        do {
-            categoryArray =  try context.fetch(request)
-        }
-        catch {
-            print("Error fetching data \(error)")
-        }
-    }
-    
-    func saveItems() {
-        
-        
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = UIActivityIndicatorView.Style.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        
-        do {
-            try context.save()
-            print("Saving to CoreData")
-        } catch {
-            print("Error saving data to CoreData: \(error)")
-        }
-        activityIndicator.stopAnimating()
-        navigationController?.popViewController(animated: true)
-    }
     
 }
 

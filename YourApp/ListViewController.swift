@@ -13,15 +13,16 @@ import CoreData
 class ListViewController: UITableViewController {
     
     var itemArray = [Task]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let dataMan = DataManager()
+    
     
     override func viewDidLoad() {
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        loadItems()
+        itemArray = dataMan.getTasks()
        
     }
     override func viewDidAppear(_ animated: Bool) {
-        loadItems()
+        itemArray = dataMan.getTasks()
         self.tableView.reloadData()
     }
     
@@ -34,6 +35,8 @@ class ListViewController: UITableViewController {
         let backgroundColorIndex = Int(itemArray[indexPath.row].categoryColor)
         cell.cellLabelOutlet.text = itemArray[indexPath.row].title
         cell.labelColorOutlet.backgroundColor = returnColorforIndex(backgroundColorIndex)
+        let formattedDate = itemArray[indexPath.row].dueDate?.formatDate()
+        cell.dateLabelOutlet.text = formattedDate
         
         
 //        let backgroundColor = returnColorforIndex(backgroundColorIndex)
@@ -80,7 +83,7 @@ class ListViewController: UITableViewController {
             cell.cellLabelOutlet.text = itemArray[indexPath.row].title
             itemArray[indexPath.row].done = false
         }
-        saveItems()
+        dataMan.saveItems()
         tableView.reloadData()
         
         
@@ -97,10 +100,10 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            context.delete(itemArray[indexPath.row])
+            dataMan.deleteTask(itemArray[indexPath.row])
             itemArray.remove(at: indexPath.row)
             
-            saveItems()
+            dataMan.saveItems()
             
             tableView.deselectRow(at: indexPath, animated: true)
             tableView.reloadData()
@@ -116,23 +119,8 @@ class ListViewController: UITableViewController {
         self.navigationController!.pushViewController(controller, animated: true)
     }
     
-    func saveItems() {
-        do {
-            try context.save()
-            print("Saving to CoreData")
-        } catch {
-            print("Error saving data to CoreData: \(error)")
-        }
-    }
     
-    func loadItems() {
-        let request : NSFetchRequest<Task> = Task.fetchRequest()
-        do {
-            itemArray = try context.fetch(request)
-        }
-        catch {
-            print("Error fetching data \(error)")
-        }
-    }
+    
+    
 }
 

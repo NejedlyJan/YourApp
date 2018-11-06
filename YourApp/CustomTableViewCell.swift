@@ -11,6 +11,7 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var dateLabelOutlet: UILabel!
     @IBOutlet weak var labelColorOutlet: UIView!
     @IBOutlet weak var cellLabelOutlet: UILabel!
     

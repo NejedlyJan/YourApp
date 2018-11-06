@@ -90,10 +90,18 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="874-Ez-zZT">
+                                            <rect key="frame" x="148" y="12" width="121" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cellLabelOutlet" destination="n12-Wo-Tan" id="NH8-vk-BHG"/>
+                                    <outlet property="dateLabelOutlet" destination="874-Ez-zZT" id="Ffk-ZD-rvs"/>
                                     <outlet property="labelColorOutlet" destination="zre-GC-Wib" id="pQL-bT-eCb"/>
                                 </connections>
                             </tableViewCell>
@@ -199,7 +207,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqQ-yZ-pqY">
-                                <rect key="frame" x="160" y="426" width="101" height="48"/>
+                                <rect key="frame" x="157" y="426" width="61" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.32156862749999998" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add task">
@@ -244,17 +252,11 @@
                                     <action selector="dueDateSwitchClicked:" destination="8cL-Ei-Y8a" eventType="valueChanged" id="Op2-QG-AXU"/>
                                 </connections>
                             </switch>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="I5v-Ue-84X">
-                                <rect key="frame" x="192" y="506" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" red="1" green="0.43137254899999999" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SwZ-tI-jDa"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="I5v-Ue-84X" id="qNP-i2-8lP"/>
                         <outlet property="categoryInputOutlet" destination="bxN-VP-dRQ" id="3rc-47-yVe"/>
                         <outlet property="categorySwitchOutlet" destination="Wyn-0d-Cc4" id="FTa-kd-pAE"/>
                         <outlet property="dueDateInputOutlet" destination="En0-Hr-giF" id="ViD-PT-prX"/>
