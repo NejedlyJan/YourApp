@@ -14,38 +14,37 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var settingSwitchOutlet: UISwitch!
     @IBOutlet weak var newCategoryInputOutlet: UITextField!
-    let dataMan = DataManager()
-    let notificationMan = NotificationManager()
-    var categoryNames = [String]()
+    private let dataMananager = DataManager()
+    private let notificationMan = NotificationManager()
+    private lazy var categoryNames = [String]()
     
-    
-    
-    @IBAction func switchButtonPressed(_ sender: Any) {
-        UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-    }
     
     override func viewDidLoad() {
-        for category in dataMan.getItem(Category.self) {
+        for category in dataMananager.getItem(Category.self) {
             categoryNames.append(category.name!)
         }
         
         newCategoryInputOutlet.delegate = self
         newCategoryInputOutlet.returnKeyType = UIReturnKeyType.done
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateSwitch), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setupSwitch), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupSwitch()
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         newCategoryInputOutlet.resignFirstResponder()
         return true
     }
-    @objc func updateSwitch() {
-        setupSwitch()
-    }
     
-    fileprivate func setupSwitch() {
+    @objc private func setupSwitch() {
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings(){ (settings) in
-            
             switch settings.alertSetting{
             case .enabled:
                 self.operateSwitch(true)
@@ -56,19 +55,16 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    func operateSwitch(_ isOn: Bool) {
+    
+    private func operateSwitch(_ isOn: Bool) {
         DispatchQueue.main.async(execute: {
             self.settingSwitchOutlet.isOn = isOn
         })
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setupSwitch()
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
+    @IBAction func switchButtonPressed(_ sender: Any) {
+        UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
     }
-    
-    
     
     @IBAction func addButtonClicked(_ sender: Any) {
         var title = "Success"
@@ -86,9 +82,11 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             return
         }
         categoryNames.append(newCategoryInputOutlet.text!)
-        let newItem = Category(context: dataMan.getContext())
+        let newItem = Category(context: dataMananager.getContext())
         newItem.name = newCategoryInputOutlet.text
-        dataMan.saveItems()
+        dataMananager.saveItems()
+        newCategoryInputOutlet.text = ""
+        newCategoryInputOutlet.resignFirstResponder()
         notificationMan.showAlert(title: title, message: message, view: self)
         return
         

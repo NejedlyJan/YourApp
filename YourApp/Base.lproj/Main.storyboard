@@ -18,33 +18,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YaM-DH-0TX">
-                                <rect key="frame" x="41" y="281" width="143" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVd-EZ-KcL">
-                                <rect key="frame" x="214" y="280" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.40401806899999998" blue="0.29062817889999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleColor" red="1" green="0.9813650867" blue="0.99841230189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="addButtonClicked:" destination="Lz0-MT-EJS" eventType="touchUpInside" id="bo3-Bb-ccr"/>
-                                </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvu-pW-D6a">
-                                <rect key="frame" x="214" y="200" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="switchButtonPressed:" destination="Lz0-MT-EJS" eventType="touchUpInside" id="bM5-YZ-GkT"/>
-                                </connections>
-                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtZ-nw-XxF">
+                                <rect key="frame" x="32.5" y="124" width="310" height="140"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YaM-DH-0TX">
+                                        <rect key="frame" x="0.0" y="110" width="215" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="BSf-mB-amJ"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVd-EZ-KcL" customClass="RoundButton" customModule="YourApp" customModuleProvider="target">
+                                        <rect key="frame" x="225" y="110" width="85" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.40401806899999998" blue="0.29062817889999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="Wpu-l9-Hwo"/>
+                                            <constraint firstAttribute="height" constant="30" id="yXd-Qn-GD4"/>
+                                        </constraints>
+                                        <state key="normal" title="Add">
+                                            <color key="titleColor" red="1" green="0.9813650867" blue="0.99841230189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addButtonClicked:" destination="Lz0-MT-EJS" eventType="touchUpInside" id="bo3-Bb-ccr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a new category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnO-jm-pYD">
+                                        <rect key="frame" x="0.0" y="81" width="153" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvu-pW-D6a">
+                                        <rect key="frame" x="261" y="0.0" width="51" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="EWb-cu-g87"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="switchButtonPressed:" destination="Lz0-MT-EJS" eventType="touchUpInside" id="bM5-YZ-GkT"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable/Disable Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOA-zm-BnU">
+                                        <rect key="frame" x="0.0" y="0.0" width="215" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gO4-9R-IuR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fvu-pW-D6a" secondAttribute="trailing" id="0sf-e6-KV9"/>
+                                    <constraint firstItem="YaM-DH-0TX" firstAttribute="leading" secondItem="mtZ-nw-XxF" secondAttribute="leading" id="25d-XF-cgS"/>
+                                    <constraint firstAttribute="bottom" secondItem="pVd-EZ-KcL" secondAttribute="bottom" id="Drd-g6-hHn"/>
+                                    <constraint firstAttribute="height" constant="140" id="Hwy-0F-iXd"/>
+                                    <constraint firstItem="LOA-zm-BnU" firstAttribute="leading" secondItem="mtZ-nw-XxF" secondAttribute="leading" id="Yaw-DK-5mu"/>
+                                    <constraint firstItem="pVd-EZ-KcL" firstAttribute="leading" secondItem="YaM-DH-0TX" secondAttribute="trailing" constant="10" id="efX-8o-DVH"/>
+                                    <constraint firstItem="LOA-zm-BnU" firstAttribute="top" secondItem="mtZ-nw-XxF" secondAttribute="top" id="g87-Zg-QJN"/>
+                                    <constraint firstItem="fvu-pW-D6a" firstAttribute="top" secondItem="mtZ-nw-XxF" secondAttribute="top" id="piN-U0-5wy"/>
+                                    <constraint firstAttribute="trailing" secondItem="pVd-EZ-KcL" secondAttribute="trailing" id="tRh-Da-qki"/>
+                                    <constraint firstAttribute="bottom" secondItem="YaM-DH-0TX" secondAttribute="bottom" id="v6f-mz-0rB"/>
+                                    <constraint firstAttribute="width" constant="310" id="z6H-gk-j5g"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mtZ-nw-XxF" firstAttribute="top" secondItem="4mY-8Z-pwf" secondAttribute="top" constant="60" id="cVp-Jy-5qH"/>
+                            <constraint firstItem="mtZ-nw-XxF" firstAttribute="centerX" secondItem="7UH-Aq-muC" secondAttribute="centerX" id="unH-3k-Kah"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4mY-8Z-pwf"/>
                     </view>
                     <connections>
@@ -72,17 +123,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n12-Wo-Tan">
-                                            <rect key="frame" x="67" y="11" width="114" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n12-Wo-Tan">
+                                            <rect key="frame" x="43" y="12" width="200" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="IcU-WB-VGN"/>
+                                                <constraint firstAttribute="width" constant="200" id="Zez-2q-xpB"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zre-GC-Wib">
-                                            <rect key="frame" x="16" y="13" width="20" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zre-GC-Wib">
+                                            <rect key="frame" x="16" y="12" width="20" height="20"/>
                                             <color key="backgroundColor" red="1" green="0.40401806899999998" blue="0.29062817889999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="TUj-qC-Dvg"/>
+                                                <constraint firstAttribute="width" constant="20" id="in6-Ub-s7b"/>
+                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="10"/>
@@ -90,21 +147,43 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25.8.18 14:57" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="874-Ez-zZT">
-                                            <rect key="frame" x="217" y="0.0" width="87" height="15"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmA-fy-ULY">
-                                            <rect key="frame" x="262" y="18" width="42" height="15"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-eJ-yj2">
+                                            <rect key="frame" x="256" y="0.0" width="85" height="43.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25.8.18 14:57" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="874-Ez-zZT">
+                                                    <rect key="frame" x="9" y="3" width="76" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmA-fy-ULY">
+                                                    <rect key="frame" x="54" y="25.5" width="31" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="vmA-fy-ULY" secondAttribute="trailing" id="0nu-d4-Qih"/>
+                                                <constraint firstItem="874-Ez-zZT" firstAttribute="top" secondItem="vU9-eJ-yj2" secondAttribute="top" constant="3" id="2TR-Hx-m4O"/>
+                                                <constraint firstAttribute="bottom" secondItem="vmA-fy-ULY" secondAttribute="bottom" constant="3" id="bC4-fl-V3g"/>
+                                                <constraint firstAttribute="width" constant="85" id="fiH-4o-5Ch"/>
+                                                <constraint firstAttribute="trailing" secondItem="874-Ez-zZT" secondAttribute="trailing" id="gcV-0M-c0I"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vU9-eJ-yj2" firstAttribute="centerY" secondItem="HMd-Uz-PbK" secondAttribute="centerY" id="IqM-8L-9DH"/>
+                                        <constraint firstAttribute="trailing" secondItem="vU9-eJ-yj2" secondAttribute="trailing" id="Knp-Q6-SX2"/>
+                                        <constraint firstItem="vU9-eJ-yj2" firstAttribute="top" secondItem="HMd-Uz-PbK" secondAttribute="top" id="O6e-G0-27C"/>
+                                        <constraint firstItem="zre-GC-Wib" firstAttribute="leading" secondItem="HMd-Uz-PbK" secondAttribute="leadingMargin" id="Pkl-kM-bPJ"/>
+                                        <constraint firstItem="n12-Wo-Tan" firstAttribute="leading" secondItem="zre-GC-Wib" secondAttribute="trailing" constant="7" id="WJA-JT-we5"/>
+                                        <constraint firstItem="zre-GC-Wib" firstAttribute="centerY" secondItem="HMd-Uz-PbK" secondAttribute="centerY" id="bZt-xv-prv"/>
+                                        <constraint firstItem="n12-Wo-Tan" firstAttribute="centerY" secondItem="HMd-Uz-PbK" secondAttribute="centerY" id="etl-fv-Nx2"/>
+                                        <constraint firstAttribute="bottom" secondItem="vU9-eJ-yj2" secondAttribute="bottom" id="rPo-or-AKH"/>
+                                        <constraint firstAttribute="trailing" secondItem="vU9-eJ-yj2" secondAttribute="trailing" id="rb8-63-Fe0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="categoryLabelOutlet" destination="vmA-fy-ULY" id="48N-Kv-6hZ"/>
@@ -157,7 +236,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Emi-8h-G97" userLabel="ButtonContainer">
                                 <rect key="frame" x="62.5" y="164" width="250" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGc-Ny-d4G">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGc-Ny-d4G" customClass="RoundButton" customModule="YourApp" customModuleProvider="target">
                                         <rect key="frame" x="140" y="0.0" width="40" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.43137254901960786" blue="0.51372549019607838" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -165,16 +244,15 @@
                                             <constraint firstAttribute="width" constant="40" id="k63-CN-ZcE"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeColorWithSender:" destination="8cL-Ei-Y8a" eventType="touchUpInside" id="8NF-Tr-7LJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9M-L5-he8">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9M-L5-he8" customClass="RoundButton" customModule="YourApp" customModuleProvider="target">
                                         <rect key="frame" x="210" y="0.0" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.88627450980392153" green="0.70588235294117641" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -182,16 +260,15 @@
                                             <constraint firstAttribute="height" constant="40" id="sPu-eI-A5j"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeColorWithSender:" destination="8cL-Ei-Y8a" eventType="touchUpInside" id="VGP-VP-LON"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttz-rB-DL9">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttz-rB-DL9" customClass="RoundButton" customModule="YourApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.32156862749999998" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -199,16 +276,15 @@
                                             <constraint firstAttribute="height" constant="40" id="vTM-XK-q7b"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeColorWithSender:" destination="8cL-Ei-Y8a" eventType="touchUpInside" id="64u-7r-qUX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPa-7t-qhe">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPa-7t-qhe" customClass="RoundButton" customModule="YourApp" customModuleProvider="target">
                                         <rect key="frame" x="70" y="0.0" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.47450980392156861" green="0.65490196078431373" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -216,10 +292,9 @@
                                             <constraint firstAttribute="width" constant="40" id="1Yt-Tf-Xhf"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeColorWithSender:" destination="8cL-Ei-Y8a" eventType="touchUpInside" id="O6n-y6-wO1"/>
@@ -330,16 +405,29 @@
                                     <constraint firstItem="Nhy-Ix-ZVe" firstAttribute="leading" secondItem="En0-Hr-giF" secondAttribute="trailing" constant="7" id="usw-uX-fQB"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqQ-yZ-pqY">
-                                <rect key="frame" x="127" y="334" width="121" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqQ-yZ-pqY" customClass="RoundButton" customModule="YourApp" customModuleProvider="target">
+                                <rect key="frame" x="47.5" y="334" width="280" height="35"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.32156862749999998" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="TG4-Hc-RIS"/>
-                                    <constraint firstAttribute="height" constant="48" id="txQ-IU-082"/>
+                                    <constraint firstAttribute="width" constant="280" id="TG4-Hc-RIS"/>
+                                    <constraint firstAttribute="height" constant="35" id="txQ-IU-082"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Add task">
                                     <color key="titleColor" red="1" green="0.9813650867" blue="0.99841230189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addItemButtonClicked:" destination="8cL-Ei-Y8a" eventType="touchUpInside" id="mXX-dZ-RDh"/>
                                 </connections>

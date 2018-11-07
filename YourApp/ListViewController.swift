@@ -12,17 +12,12 @@ import CoreData
 
 class ListViewController: UITableViewController {
     
-    var itemArray = [Task]()
-    let dataMan = DataManager()
+    private var itemArray = [Task]()
+    private let dataMananager = DataManager()
     
-    
-    override func viewDidLoad() {
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        itemArray = dataMan.getItem(Task.self)
-       
-    }
     override func viewDidAppear(_ animated: Bool) {
-        itemArray = dataMan.getItem(Task.self)
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        itemArray = dataMananager.getItem(Task.self)
         self.tableView.reloadData()
     }
     
@@ -32,19 +27,64 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListItemCell", for: indexPath) as! CustomTableViewCell
-        let backgroundColorIndex = Int(itemArray[indexPath.row].categoryColor)
-        cell.cellLabelOutlet.text = itemArray[indexPath.row].title
+        let task = itemArray[indexPath.row]
+        let text = task.title
+        let backgroundColorIndex = Int(task.categoryColor)
+        let formattedDate = task.dueDate?.formatDate()
+        
+        if !task.done {
+            cell.cellLabelOutlet.text = text
+        }
+        else {
+            cell.cellLabelOutlet.attributedText = text?.getStruckedText()
+        }
+    
         cell.labelColorOutlet.backgroundColor = returnColorforIndex(backgroundColorIndex)
-        let formattedDate = itemArray[indexPath.row].dueDate?.formatDate()
         cell.dateLabelOutlet.text = formattedDate
-        cell.categoryLabelOutlet.text = itemArray[indexPath.row].parentCategory?.name
+        cell.categoryLabelOutlet.text = task.parentCategory?.name
         cell.tintColor = returnColorforIndex(backgroundColorIndex)
         cell.accessoryType = .detailButton
         
         return cell
     }
     
-    fileprivate func returnColorforIndex(_ index: Int) -> UIColor {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+        let text = cell.cellLabelOutlet.text
+        let task = itemArray[indexPath.row]
+        
+        if !task.done {
+            cell.cellLabelOutlet.attributedText = text?.getStruckedText()
+            task.done = true
+        }
+        else {
+            cell.cellLabelOutlet.attributedText = nil
+            cell.cellLabelOutlet.text = task.title
+            task.done = false
+        }
+        dataMananager.saveItems()
+        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            dataMananager.deleteTask(itemArray[indexPath.row])
+            itemArray.remove(at: indexPath.row)
+            dataMananager.saveItems()
+            tableView.deselectRow(at: indexPath, animated: true)
+            tableView.reloadData()
+        }
+    }
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let task = itemArray[indexPath.row]
+        let newTaskVC = storyboard?.instantiateViewController(withIdentifier: "NewTaskViewController") as! NewTaskViewController
+        newTaskVC.setTask(task: task)
+        self.navigationController!.pushViewController(newTaskVC, animated: true)
+    }
+    
+    private func returnColorforIndex(_ index: Int) -> UIColor {
         let backgroundColor: UIColor
         switch index {
         case 1:
@@ -60,52 +100,12 @@ class ListViewController: UITableViewController {
         }
         return backgroundColor
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
-        let text = cell.cellLabelOutlet.text
-        
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: text!)
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-        
-        if !itemArray[indexPath.row].done {
-            cell.cellLabelOutlet.attributedText = attributeString
-            itemArray[indexPath.row].done = true
-        }
-        else {
-            cell.cellLabelOutlet.attributedText = nil
-            cell.cellLabelOutlet.text = itemArray[indexPath.row].title
-            itemArray[indexPath.row].done = false
-        }
-        dataMan.saveItems()
-        tableView.deselectRow(at: indexPath, animated: true)
-        tableView.reloadData()
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            dataMan.deleteTask(itemArray[indexPath.row])
-            itemArray.remove(at: indexPath.row)
-            
-            dataMan.saveItems()
-            
-            tableView.deselectRow(at: indexPath, animated: true)
-            tableView.reloadData()
-        }
-    }
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print(indexPath.row)
-        let task = itemArray[indexPath.row]
-        print(task)
-
-        let controller = storyboard?.instantiateViewController(withIdentifier: "NewTaskViewController") as! NewTaskViewController
-        controller.setTask(task: task)
-        self.navigationController!.pushViewController(controller, animated: true)
-    }
-    
-    
-    
-    
 }
 
+extension String {
+    func getStruckedText() -> NSMutableAttributedString {
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: self)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        return attributeString
+    }
+}

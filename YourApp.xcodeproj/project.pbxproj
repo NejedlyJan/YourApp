@@ -12,6 +12,7 @@
 		7E56EF912191A80D00694FBA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56EF902191A80D00694FBA /* DataManager.swift */; };
 		7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */; };
 		7E85A3C0218DF92D00A474A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */; };
+		7E98E7052192FC9D006FF912 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98E7042192FC9D006FF912 /* RoundButton.swift */; };
 		7EAEE106218CD6460012202D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE105218CD6460012202D /* AppDelegate.swift */; };
 		7EAEE108218CD6460012202D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE107218CD6460012202D /* ListViewController.swift */; };
 		7EAEE10B218CD6460012202D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAEE109218CD6460012202D /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		7E56EF902191A80D00694FBA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7E98E7042192FC9D006FF912 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		7EAEE102218CD6460012202D /* YourApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAEE105218CD6460012202D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EAEE107218CD6460012202D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */,
 				7E56EF8C2190430E00694FBA /* NotificationManager.swift */,
 				7E56EF8E2190915000694FBA /* CustomTableViewCell.swift */,
+				7E98E7042192FC9D006FF912 /* RoundButton.swift */,
 				7EAEE109218CD6460012202D /* Main.storyboard */,
 				7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */,
 				7EAEE10C218CD6480012202D /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E98E7052192FC9D006FF912 /* RoundButton.swift in Sources */,
 				7E56EF8D2190430E00694FBA /* NotificationManager.swift in Sources */,
 				7E56EF912191A80D00694FBA /* DataManager.swift in Sources */,
 				7EAEE108218CD6460012202D /* ListViewController.swift in Sources */,
@@ -306,6 +310,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GVL2LSVA4Y;
 				INFOPLIST_FILE = YourApp/Info.plist;
@@ -324,6 +329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GVL2LSVA4Y;
 				INFOPLIST_FILE = YourApp/Info.plist;

@@ -11,9 +11,7 @@ import UIKit
 
 class DataManager {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func saveItems() {
         do {
@@ -24,11 +22,9 @@ class DataManager {
         }
     }
 
-    
     func getContext() -> NSManagedObjectContext {
         return context
     }
-    
     
     func getItem<T:NSManagedObject>(_ type: T.Type) -> [T] {
         let request : NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
