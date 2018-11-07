@@ -75,6 +75,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
         submitButtonOutlet.setTitle("Update task", for: .normal)
         let deleteButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteButtonClicked))
+        deleteButton.tintColor = UIColor.red
         self.navigationItem.rightBarButtonItem = deleteButton
     }
     
