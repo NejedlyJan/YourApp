@@ -16,7 +16,6 @@ class DataManager {
     func saveItems() {
         do {
             try context.save()
-            print("Saving to CoreData")
         } catch {
             print("Error saving data to CoreData: \(error)")
         }

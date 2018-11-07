@@ -26,7 +26,7 @@ class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListItemCell", for: indexPath) as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListItemCell", for: indexPath) as! TaskTableViewCell
         let task = itemArray[indexPath.row]
         let text = task.title
         let backgroundColorIndex = Int(task.categoryColor)
@@ -50,7 +50,7 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let cell = tableView.cellForRow(at: indexPath) as! CustomTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
         let text = cell.cellLabelOutlet.text
         let task = itemArray[indexPath.row]
         

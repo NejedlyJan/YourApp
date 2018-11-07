@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class TaskTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var dateLabelOutlet: UILabel!

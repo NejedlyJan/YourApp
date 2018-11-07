@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var newCategoryInputOutlet: UITextField!
     private let dataMananager = DataManager()
     private let notificationMan = NotificationManager()
-    private lazy var categoryNames = [String]()
+    private var categoryNames = [String]()
     
     
     override func viewDidLoad() {

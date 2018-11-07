@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E56EF8D2190430E00694FBA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56EF8C2190430E00694FBA /* NotificationManager.swift */; };
-		7E56EF8F2190915000694FBA /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56EF8E2190915000694FBA /* CustomTableViewCell.swift */; };
+		7E56EF8F2190915000694FBA /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56EF8E2190915000694FBA /* TaskTableViewCell.swift */; };
 		7E56EF912191A80D00694FBA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56EF902191A80D00694FBA /* DataManager.swift */; };
 		7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */; };
 		7E85A3C0218DF92D00A474A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */; };
@@ -18,13 +18,12 @@
 		7EAEE108218CD6460012202D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE107218CD6460012202D /* ListViewController.swift */; };
 		7EAEE10B218CD6460012202D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAEE109218CD6460012202D /* Main.storyboard */; };
 		7EAEE10D218CD6480012202D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EAEE10C218CD6480012202D /* Assets.xcassets */; };
-		7EAEE110218CD6480012202D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAEE10E218CD6480012202D /* LaunchScreen.storyboard */; };
 		7EAEE118218CE70C0012202D /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE117218CE70C0012202D /* NewTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7E56EF8C2190430E00694FBA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		7E56EF8E2190915000694FBA /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		7E56EF8E2190915000694FBA /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		7E56EF902191A80D00694FBA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +34,6 @@
 		7EAEE107218CD6460012202D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		7EAEE10A218CD6460012202D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EAEE10C218CD6480012202D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7EAEE10F218CD6480012202D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EAEE111218CD6480012202D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EAEE117218CE70C0012202D /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +49,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E98E70821934FE8006FF912 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7EAEE107218CD6460012202D /* ListViewController.swift */,
+				7EAEE117218CE70C0012202D /* NewTaskViewController.swift */,
+				7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7E98E70921935008006FF912 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E56EF902191A80D00694FBA /* DataManager.swift */,
+				7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7E98E70A21935033006FF912 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				7EAEE109218CD6460012202D /* Main.storyboard */,
+				7E98E7042192FC9D006FF912 /* RoundButton.swift */,
+			);
+			path = VIew;
+			sourceTree = "<group>";
+		};
+		7E98E70B21935055006FF912 /* Support files */ = {
+			isa = PBXGroup;
+			children = (
+				7E56EF8E2190915000694FBA /* TaskTableViewCell.swift */,
+				7EAEE105218CD6460012202D /* AppDelegate.swift */,
+				7E56EF8C2190430E00694FBA /* NotificationManager.swift */,
+				7E98E70621932E5F006FF912 /* Extensions.swift */,
+			);
+			path = "Support files";
+			sourceTree = "<group>";
+		};
 		7EAEE0F9218CD6460012202D = {
 			isa = PBXGroup;
 			children = (
@@ -70,19 +107,11 @@
 		7EAEE104218CD6460012202D /* YourApp */ = {
 			isa = PBXGroup;
 			children = (
-				7EAEE105218CD6460012202D /* AppDelegate.swift */,
-				7EAEE107218CD6460012202D /* ListViewController.swift */,
-				7EAEE117218CE70C0012202D /* NewTaskViewController.swift */,
-				7E56EF902191A80D00694FBA /* DataManager.swift */,
-				7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */,
-				7E56EF8C2190430E00694FBA /* NotificationManager.swift */,
-				7E56EF8E2190915000694FBA /* CustomTableViewCell.swift */,
-				7E98E7042192FC9D006FF912 /* RoundButton.swift */,
-				7E98E70621932E5F006FF912 /* Extensions.swift */,
-				7EAEE109218CD6460012202D /* Main.storyboard */,
-				7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */,
+				7E98E70B21935055006FF912 /* Support files */,
+				7E98E70A21935033006FF912 /* VIew */,
+				7E98E70921935008006FF912 /* Model */,
+				7E98E70821934FE8006FF912 /* Controllers */,
 				7EAEE10C218CD6480012202D /* Assets.xcassets */,
-				7EAEE10E218CD6480012202D /* LaunchScreen.storyboard */,
 				7EAEE111218CD6480012202D /* Info.plist */,
 			);
 			path = YourApp;
@@ -146,7 +175,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EAEE110218CD6480012202D /* LaunchScreen.storyboard in Resources */,
 				7EAEE10D218CD6480012202D /* Assets.xcassets in Resources */,
 				7EAEE10B218CD6460012202D /* Main.storyboard in Resources */,
 			);
@@ -165,7 +193,7 @@
 				7EAEE108218CD6460012202D /* ListViewController.swift in Sources */,
 				7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */,
 				7E98E70721932E5F006FF912 /* Extensions.swift in Sources */,
-				7E56EF8F2190915000694FBA /* CustomTableViewCell.swift in Sources */,
+				7E56EF8F2190915000694FBA /* TaskTableViewCell.swift in Sources */,
 				7EAEE118218CE70C0012202D /* NewTaskViewController.swift in Sources */,
 				7E85A3C0218DF92D00A474A7 /* SettingsViewController.swift in Sources */,
 				7EAEE106218CD6460012202D /* AppDelegate.swift in Sources */,
@@ -181,14 +209,6 @@
 				7EAEE10A218CD6460012202D /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7EAEE10E218CD6480012202D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7EAEE10F218CD6480012202D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -378,8 +398,7 @@
 				7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */,
 			);
 			currentVersion = 7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */;
-			name = DataModel.xcdatamodeld;
-			path = ../DataModel.xcdatamodeld;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
