@@ -63,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				7E56EF902191A80D00694FBA /* DataManager.swift */,
-				7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,6 +111,7 @@
 				7E98E70921935008006FF912 /* Model */,
 				7E98E70821934FE8006FF912 /* Controllers */,
 				7EAEE10C218CD6480012202D /* Assets.xcassets */,
+				7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */,
 				7EAEE111218CD6480012202D /* Info.plist */,
 			);
 			path = YourApp;
@@ -398,7 +398,8 @@
 				7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */,
 			);
 			currentVersion = 7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
+			name = DataModel.xcdatamodeld;
+			path = Model/DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
