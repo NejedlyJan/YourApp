@@ -13,6 +13,7 @@
 		7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */; };
 		7E85A3C0218DF92D00A474A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */; };
 		7E98E7052192FC9D006FF912 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98E7042192FC9D006FF912 /* RoundButton.swift */; };
+		7E98E70721932E5F006FF912 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98E70621932E5F006FF912 /* Extensions.swift */; };
 		7EAEE106218CD6460012202D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE105218CD6460012202D /* AppDelegate.swift */; };
 		7EAEE108218CD6460012202D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEE107218CD6460012202D /* ListViewController.swift */; };
 		7EAEE10B218CD6460012202D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EAEE109218CD6460012202D /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		7E85A3BD218DEFC800A474A7 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		7E85A3BF218DF92D00A474A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7E98E7042192FC9D006FF912 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		7E98E70621932E5F006FF912 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7EAEE102218CD6460012202D /* YourApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAEE105218CD6460012202D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EAEE107218CD6460012202D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				7E56EF8C2190430E00694FBA /* NotificationManager.swift */,
 				7E56EF8E2190915000694FBA /* CustomTableViewCell.swift */,
 				7E98E7042192FC9D006FF912 /* RoundButton.swift */,
+				7E98E70621932E5F006FF912 /* Extensions.swift */,
 				7EAEE109218CD6460012202D /* Main.storyboard */,
 				7E85A3BC218DEFC800A474A7 /* DataModel.xcdatamodeld */,
 				7EAEE10C218CD6480012202D /* Assets.xcassets */,
@@ -161,6 +164,7 @@
 				7E56EF912191A80D00694FBA /* DataManager.swift in Sources */,
 				7EAEE108218CD6460012202D /* ListViewController.swift in Sources */,
 				7E85A3BE218DEFC800A474A7 /* DataModel.xcdatamodeld in Sources */,
+				7E98E70721932E5F006FF912 /* Extensions.swift in Sources */,
 				7E56EF8F2190915000694FBA /* CustomTableViewCell.swift in Sources */,
 				7EAEE118218CE70C0012202D /* NewTaskViewController.swift in Sources */,
 				7E85A3C0218DF92D00A474A7 /* SettingsViewController.swift in Sources */,

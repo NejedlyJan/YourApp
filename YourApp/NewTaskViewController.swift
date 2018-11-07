@@ -230,12 +230,3 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         navigationController?.popViewController(animated: true)
     }
 }
-
-extension Date {
-    func formatDate() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YY HH:mm"
-        let formattedString = dateFormatter.string(from: self)
-        return formattedString
-    }
-}
